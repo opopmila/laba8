@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="500" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      //домик
+      ctx.fillStyle = "red";
+      ctx.fillRect(100, 200, 200, 200);
+      ctx.fillStyle = "orange";
+      ctx.fillRect(140, 300, 120, 100);
+      ctx.fillStyle = "black";
+      ctx.beginPath();
+      ctx.moveTo(90, 200);
+      ctx.lineTo(310, 200);
+      ctx.lineTo(200, 100);
+      ctx.closePath();
+      ctx.fill();
+      //дерево
+      ctx.fillStyle = "green";
+      ctx.fillRect(350, 200, 50, 150);
+      ctx.fillStyle = "brown";
+      ctx.fillRect(370, 250, 10, 150);
+      //солнце
+      function drawSun() {
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(50, 50, 30, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+      }
+      // Нарисовать луну
+      function drawMoon() {
+        ctx.beginPath();
+        ctx.arc(50, 50, 30, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.fillStyle = "black";
+        ctx.arc(35, 40, 10, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      drawSun();
+      // Функция для смены солнца на луну и наоборот
+      function toggleSunAndMoon() {
+        if (ctx.fillStyle === "white") {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawMoon();
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawSun();
+        }
+      }
+      // Назначение функции на щелчок мыши
+      canvas.addEventListener("click", toggleSunAndMoon);
+    </script>
+  </body>
+</html>

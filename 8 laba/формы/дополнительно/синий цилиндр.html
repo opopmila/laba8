@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 canvas shapes</title>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "blue";
+        //овал
+        ctx.beginPath();
+        ctx.save();
+        ctx.scale(2, 1);
+        ctx.arc(72, 130, 25, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        //квадрат
+        ctx.fillRect(47, 128, 50, 80);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        //овал
+        ctx.beginPath();
+        ctx.save();
+        ctx.scale(1, 1);
+        ctx.arc(72, 210, 25, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+      }
+    </script>
+  </head>
+
+  <body onload="draw();">
+    <canvas id="myCanvas" width="350" height="350"> </canvas>
+  </body>
+</html>
